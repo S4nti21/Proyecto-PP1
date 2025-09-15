@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="img/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/RegistrarceStyles.css">
+    <link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Crear cuenta</h1>
+        <form action="/register" method="POST">
+            <div class="input-box">
+                <input placeholder="Correo electrónico" type="email" id="email" name="email" required>
+                <i class='bx  bx-at'  ></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Nombre" id="name" name="name" required>
+                <i class='bx bx-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Apellido" id="surname" name="surname" required>
+                <i class='bx bx-user'></i>  
+            </div>
+            <div class="input-box">
+                <input placeholder="Contraseña" type="password" id="password" name="password" required>
+                <i class='bx bx-lock'></i>
+            </div>
+            <button class="btn" type="submit">Crear cuenta</button>
+            <p class="text-login">¿Ya tienes una cuenta? <a href="InicioSesion.html">Inicia sesión aquí</a></p>
+        </form>
+    </div>
+</body>
+</html>
