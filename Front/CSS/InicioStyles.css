@@ -1,85 +1,155 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: "poppins", sans-serif;
 }
+
 body {
     min-height: 100vh;
-    background-image: url('../img/Fondo4IC.png');
+    background-image: url('../img/fondo/ciudad-de-Santa-Fe-scaled.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
-.container{
+
+.container {
     border: 2px solid rgba(255, 255, 255, 0.2);
     width: 90%;
     max-width: 450px;
     padding: 30px 40px;
     border-radius: 10px;
-    color: rgb(0, 0, 0);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: rgb(255, 255, 255);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
-.container h1{
+
+.container h1 {
     text-align: center;
     margin-bottom: 35px;
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
-.input-box{
-    border: 2px solid rgba(0, 0, 0, 0.4);
+
+.input-box {
+    border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 40px;
     padding: 20px;
     display: flex;
     align-items: center;
     height: 60px;
+    transition: border-color 0.3s ease;
+    ;
 }
-.input-box input{
+
+.input-box input {
     background: transparent;
     border: 0;
     outline: 0;
     flex: 1;
     font-size: 16px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     min-width: 0;
 }
-.input-box input::placeholder{
-    color:rgba(0, 0, 0, 0.6);
+
+.input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
-.input-box:hover{
-    border-color: #000000;
+
+.input-box:hover {
+    border-color: #ffffff;
 }
-form a:hover{
+
+form a:hover {
     text-decoration: underline;
 }
-.login-button{
+
+.login-button {
     font-weight: 500;
     padding: 10px;
     border: 0;
     outline: 0;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     font-size: 18px;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease;
 }
-.login-button:hover{
-    background-color: #333333;
+
+.login-button:hover {
+    background-color: #c0c0c0;
 }
-.register-link{
+
+.register-link {
     text-align: center;
     margin-top: 20px;
 }
-.register-link a{
-    color: #000000;
+
+.register-link a {
+    color: #ffffff;
 }
-.register-link a:hover{
-    color: #a4a4a4;
+
+.register-link a:hover {
+    color: #c0c0c0;
+}
+
+/*Tablets y celulares*/
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 25px;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .input-box {
+        height: 50px;
+        padding: 15px;
+    }
+
+    .login-button {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 20px;
+    }
+
+    .container h1 {
+        font-size: 20px;
+    }
+
+    .input-box {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .input-box input {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .login-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .register-link {
+        font-size: 14px;
+    }
 }

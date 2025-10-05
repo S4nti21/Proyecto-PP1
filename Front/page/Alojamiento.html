@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/AlojaminetoStyles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/Front/img/icono/logo3.png">
+    <link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Alojamiento</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="Home.html"><img src="../img/icono/logo.png" alt=""></a>
+        </div>
+        <nav>
+            <ul id="navAuth" class="nav-links">
+                <li><a href="../page/InicioSesion.html">Iniciar sesion</a></li>
+                <li><a href="../page/CrearCuenta.html">Hazte una cuenta</a></li>
+            </ul>
+        </nav>
+        <div id="navUser" class="oculto">
+            <div class="perfil" id="perfilBtn">
+                <img src="../img/icono/Captura de pantalla 2025-08-11 014632.png" alt="Foto perfil">
+                <span id="userName">Edinson Cavani</span>
+            </div>
+            <ul class="dropdown" id="dropdownMenu">
+                <li><a href="Perfil.html">Perfil</a></li>
+                <li id="PanelAnfi"><a href="PanelDeControl.html">Panel de control</a></li>
+                <li><a id="cerrarSesion">Cerrar sesión</a></li>
+            </ul>
+        </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="slider">
+                <div class="slides">
+                    <img src="../img/fotos alojamiento/111703089.jpg" alt="Imagen 1">
+                    <img src="../img/fotos alojamiento/111703171.jpg" alt="Imagen 2">
+                    <img src="../img/fotos alojamiento/116742566.jpg" alt="Imagen 3">
+                    <img src="../img/fotos alojamiento/116742577.jpg" alt="Imagen 4">
+                </div>
+                <button class="btn prev">❮</button>
+                <button class="btn next">❯</button>
+            </div>
+            <div class="info-reserva">
+                <div class="descripcion">
+                    <h1>Blvd. Galvez</h1>
+                    <p>Se encuentra en Boulevard Gálvez 1408, en pleno barrio Candioti. Está a
+                        pasos de la costanera, zonas gastronómicas y puntos emblemáticos de la
+                        ciudad. Los huéspedes destacan su posición estratégica para recorrer la
+                        ciudad caminando</p>
+                    <div class="servicios">
+                        <h3>¿Qué servicios tengo?</h3>
+                        <p><i class='bx  bx-wifi'></i> Conexion WIFI</p>
+                        <p><i class='bx  bx-cup-hot'></i> Cafeteria</p>
+                        <p><i class='bx  bx-swimming-pool'></i> Piscina</p>
+                        <p><i class='bx  bx-spa'></i> Spa</p>
+                    </div>
+                </div>
+                <form action="" class="Reserva">
+                    <p>$78000/Noche</p>
+                    <div class="fechas">
+                        <div class="in">
+                            <p>Desde</p>
+                            <input type="date" id="check-in" name="check-in" required>
+                        </div>
+                        <div class="out">
+                            <p>Hasta</p>
+                            <input type="date" name="check-out" id="check-out" required>
+                        </div>
+                    </div>
+                    <button class="btn-reserva" type="submit">Reservar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <ul class="footer-links">
+            <li><a href="">¿Cómo podemos ayudarte?</a></li>
+            <li><a href="">Centro de asistencia</a></li>
+            <li><a href="">Contacto</a></li>
+        </ul>
+        <div class="titulo">
+            <h1>S.M.O.W.S CORP</h1>
+            <h6>SMARTMIND. ONE WORD. SOFTWARE</h6>
+        </div>
+    </footer>
+    <script src="../js/logueo.js"></script>
+    <script src="../js/slideScritp.js"></script>
+</body>

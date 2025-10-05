@@ -1,0 +1,353 @@
+body {
+    margin: 0;
+    font-family: "poppins", sans-serif;
+    background-image: url(../img/fondo/cortada2.jpg);
+    backdrop-filter: blur(3px);
+}
+
+/*Header*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 40px;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 255, 255);
+    position: relative;
+}
+
+.logo img {
+    height: 55px;
+    border-radius: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+
+}
+
+.nav-links li {
+    padding: 8px 15px;
+    border: none;
+    list-style-type: none
+}
+
+.nav-links a {
+    display: block;
+    padding: 8px 15px;
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s;
+    border-radius: 10px;
+}
+
+.nav-links a:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.oculto {
+    display: none;
+}
+
+.perfil {
+    padding: 12px 1px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+}
+
+.perfil img {
+    padding: 12px 1px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.perfil span {
+    font-weight: 500;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+.menu-usuario {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown {
+    border: none;
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    border-bottom-left-radius: 10px;
+    margin-top: 1px;
+    z-index: 10;
+}
+
+.dropdown li {
+    list-style: none;
+    padding: 10px;
+}
+
+.dropdown a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 4px 6px;
+    transition: all 0.1s;
+}
+
+.dropdown a:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+/*fin header*/
+
+
+/*main*/
+main {
+    display: flex;
+}
+
+.Alojamientos {
+    flex: 1;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.btn-add {
+    font-family: "poppins", sans-serif;
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+}
+
+.btn-add:hover {
+    transform: scale(1.03);
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.card {
+    background-color: white;
+    position: relative;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.01);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-body h3 {
+    margin: 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+.overlay .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.overlay :hover {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+
+.calendario-container {
+    margin: 20px 20px 20px;
+    width: 70%;
+    max-width: 1000px;
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.calendario-container h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.fc-button {
+    background: #000 !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 6px 12px !important;
+    margin: 0 2px !important;
+    color: #fff !important;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.fc-button:hover {
+    background: #444 !important;
+}
+
+.fc-daygrid-day-number {
+    font-weight: 500;
+    color: #333;
+}
+
+
+
+/*fin main*/
+
+/*footer*/
+footer {
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    padding: 1px 40px;
+    color: rgb(255, 255, 255);
+}
+
+.titulo {
+    margin-left: 23.5%;
+    text-align: center;
+}
+
+.footer-links li {
+    list-style-type: none
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/*fin footer*/
+
+/*Tablest y celulares*/
+@media (max-width: 900px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .Alojamientos {
+        padding: 15px 20px;
+    }
+
+    .cards {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .calendario-container {
+        width: 90%;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .perfil span {
+        display: none;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .calendario-container {
+        width: 95%;
+        margin: 15px auto;
+        padding: 15px;
+    }
+}

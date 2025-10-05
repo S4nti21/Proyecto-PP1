@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="img/logo3.png" type="image/x-icon">
-    <link rel="stylesheet" href="CSS/InicioStyles.css">
+    <link rel="shortcut icon" href="../img/icono/logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/InicioStyles.css">
     <link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión</title>
@@ -12,7 +13,7 @@
     <div class="container">
         <div class="login-container">
             <h1>Iniciar sesión</h1>
-            <form class="Formulario" action="/login" method="POST">
+            <form id="Formulario">
                 <div class="input-box">
                     <input id="email" placeholder="Correo electrónico" type="email" name="email" required>
                     <i class='bx  bx-at'  ></i> 
@@ -26,5 +27,6 @@
             </form>
         </div>
     </div>
+    <script src="../js/validacion.js"></script>
 </body>
 </html>
