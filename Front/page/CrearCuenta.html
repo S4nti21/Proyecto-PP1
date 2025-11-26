@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <h1>Crear cuenta</h1>
-        <form action="/register" method="POST">
+        <form id="registroForm">
             <div class="input-box">
                 <input placeholder="Correo electrónico" type="email" id="email" name="email" required>
                 <i class='bx  bx-at'></i>
@@ -31,15 +31,16 @@
                 <input placeholder="Contraseña" type="password" id="password" name="password" required>
                 <i class='bx bx-lock'></i>
             </div>
-            <select name="" id="rol" required>
+            <select id="rol" required>
                 <option value="">Elige tu rol</option>
-                <option value="">Anfitrion</option>
-                <option value="">Huesped</option>
+                <option value="ANFITRION">Anfitrion</option>
+                <option value="HUESPED">Huesped</option>
             </select>
             <button class="btn" type="submit">Crear cuenta</button>
             <p class="text-login">¿Ya tienes una cuenta? <a href="../page/InicioSesion.html">Inicia sesión aquí</a></p>
         </form>
     </div>
+    <script src="../js/registro.js"></script>
 </body>
 
 </html>
