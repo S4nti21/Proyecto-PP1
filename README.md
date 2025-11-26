@@ -1,4 +1,4 @@
-Integrantes: Gonzalo Silva, Ocampos Jeronimo y Weidmann Santiago.
+Integrantes: Gonzalo Silva, Ocampo Jeronimo y Weidmann Santiago.
 
 En esta etapa desarroyamos el Frontend que primero conciste con su inicio de sesion (InicioSesion.html) y el crear cuenta (CrearCuenta.html) con validacion de credenciales (validacion.js). 
 Luego pasamos al Home (Home.html) para seleccionar el alojamiento, al hacerle click nos dirigira al alojamiento que queramos reservar (Alojamiento.html).
