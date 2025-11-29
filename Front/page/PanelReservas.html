@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/icono/logo3.png">
+    <link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/PanelReservas.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/locales-all.global.min.js"></script>
+
+    <title>Panel de control</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="Home.html"><img src="../img/icono/logo.png" alt=""></a>
+        </div>
+        <nav>
+            <ul id="navAuth" class="nav-links">
+                <li><a href="../page/InicioSesion.html">Iniciar sesion</a></li>
+                <li><a href="../page/CrearCuenta.html">Hazte una cuenta</a></li>
+            </ul>
+        </nav>
+            <div id="navUser" class="oculto">
+                <div class="perfil" id="perfilBtn">
+                    <img src="" alt="Foto perfil">
+                    <span id="userName"></span>
+                </div>
+                <ul class="dropdown" id="dropdownMenu">
+                    <li><a href="Perfil.html">Perfil</a></li>
+                    <li id="PanelAnfi"><a href="PanelDeControl.html">Panel de control</a></li>
+                    <li id="PanelReserva"><a href="PanelReservas.html">Mis reservas</a></li>
+                    <li><a id="cerrarSesion">Cerrar sesión</a></li>
+                </ul>
+            </div>
+    </header>
+
+    <main>
+        <div class="calendario-container">
+            <h1>RESERVAS</h1>
+            <div id="calendar"></div>
+        </div>
+        </div>
+    </main>
+
+    <script src="../js/logueo.js"></script>
+    <script src="../js/PanelReservas.js"></script>
+
+
+    <footer>
+        <ul class="footer-links">
+            <li><a href="">¿Cómo podemos ayudarte?</a></li>
+            <li><a href="">Centro de asistencia</a></li>
+            <li><a href="">Contacto</a></li>
+        </ul>
+        <div class="titulo">
+            <h1>S.M.O.W.S CORP</h1>
+            <h6>SMARTMIND. ONE WORD. SOFTWARE</h6>
+        </div>
+    </footer>
+</body>
+
+</html>

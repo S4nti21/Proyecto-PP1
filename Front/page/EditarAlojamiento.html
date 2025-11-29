@@ -30,10 +30,10 @@
             <ul class="dropdown" id="dropdownMenu">
                 <li><a href="Perfil.html">Perfil</a></li>
                 <li id="PanelAnfi"><a href="PanelDeControl.html">Panel de control</a></li>
+                <li id="PanelReserva"><a href="PanelReservas.html">Mis reservas</a></li>
                 <li><a id="cerrarSesion">Cerrar sesión</a></li>
             </ul>
         </div>
-        </nav>
     </header>
     <main>
         <form action="">
@@ -44,20 +44,28 @@
                 <input type="text" name="nombre">
 
                 <label>Tipo de alojamiento</label>
-                <input type="text" name="tipo">
+                <select name="tipo">
+                    <option value="Hotel">Hotel</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Hostel">Hostel</option>
+                    <option value="Cabaña">Cabaña</option>
+                    <option value="Departamento">Departamento</option>
+                </select>
+
 
                 <label>Dirección</label>
                 <input type="text" name="direccion">
 
                 <label>Servicios</label>
                 <div class="checkbox-group">
-                    <label><input type="checkbox" name="servicios" value="wifi"> Wi-Fi</label>
-                    <label><input type="checkbox" name="servicios" value="tv"> TV</label>
-                    <label><input type="checkbox" name="servicios" value="aire"> Aire acondicionado</label>
-                    <label><input type="checkbox" name="servicios" value="pileta"> Pileta</label>
-                    <label><input type="checkbox" name="servicios" value="cochera"> Cochera</label>
-                    <label><input type="checkbox" name="servicios" value="cochera"> Spa</label>
-                    <label><input type="checkbox" name="servicios" value="cochera"> Desayuno</label>
+                    <label><input type="checkbox" name="servicios" value="1"> Wi-Fi</label>
+                    <label><input type="checkbox" name="servicios" value="2"> TV</label>
+                    <label><input type="checkbox" name="servicios" value="3"> Aire acondicionado</label>
+                    <label><input type="checkbox" name="servicios" value="4"> Pileta</label>
+                    <label><input type="checkbox" name="servicios" value="5"> Cochera</label>
+                    <label><input type="checkbox" name="servicios" value="6"> Spa</label>
+                    <label><input type="checkbox" name="servicios" value="7"> Desayuno</label>
+
                 </div>
 
                 <label>Descripción</label>
@@ -85,6 +93,7 @@
         </div>
     </footer>
     <script src="../js/logueo.js"></script>
+    <script src="../js/editarAlojamiento.js"></script>
 </body>
 
 </html>

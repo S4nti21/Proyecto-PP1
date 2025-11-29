@@ -1,60 +1,42 @@
-// home.js
-
 document.addEventListener("DOMContentLoaded", async () => {
-
-    mostrarNavSegunSesion();
-    await cargarHospedajes();
-
+    cargarHospedajes();
+    mostrarUsuarioEnHeader();
 });
-
-// ----------------------
-// Mostrar nav según login
-// ----------------------
-function mostrarNavSegunSesion() {
-    const usuario = obtenerUsuario();
-    const navAuth = document.getElementById("navAuth");
-    const navUser = document.getElementById("navUser");
-
-    if (usuario) {
-        navAuth.classList.add("oculto");
-        navUser.classList.remove("oculto");
-
-        document.getElementById("userName").textContent =
-            usuario.nombre + " " + usuario.apellido;
-
-        if (usuario.rol !== "ANFITRION") {
-            document.getElementById("PanelAnfi").style.display = "none";
-        }
-
-    } else {
-        navUser.classList.add("oculto");
-        navAuth.classList.remove("oculto");
+async function getHospedajes() {
+    try {
+        const response = await fetch("http://localhost:8080/api/hospedaje");
+        return await response.json();
+    } catch (error) {
+        console.error("Error en getHospedajes:", error);
+        return [];
+    }
+}
+async function cargarHospedajes() {
+    try {
+        const data = await getHospedajes();
+        pintarCards(data);
+    } catch (error) {
+        console.error("Error al cargar hospedajes:", error);
     }
 }
 
-// ----------------------
-// Cargar hospedajes
-// ----------------------
-async function cargarHospedajes() {
-    const contenedor = document.querySelector(".grid-container");
+function pintarCards(lista) {
+    const contenedor = document.getElementById("listaHospedajes");
     contenedor.innerHTML = "";
 
-    const hospedajes = await getHospedajes();
-
-    hospedajes.forEach(h => {
+    lista.forEach(h => {
         const card = document.createElement("a");
-        card.href = "Alojamiento.html?id=" + h.id;
+        card.href = `Alojamiento.html?id=${h.id}`;
         card.classList.add("card");
 
         card.innerHTML = `
-            <img src="${h.imagen}" alt="${h.nombre}">
+            <img src="${h.imagen}">
             <div class="card-content">
                 <h3>${h.nombre}</h3>
-                <p>${h.descripcion}</p>
+                <p>${h.tipoHospedaje?.nombre || "Sin tipo"}</p>
                 <p class="precio">$${h.precio_por_noche} <span>Noche</span></p>
             </div>
         `;
-
         contenedor.appendChild(card);
     });
 }

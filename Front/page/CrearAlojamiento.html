@@ -30,10 +30,10 @@
             <ul class="dropdown" id="dropdownMenu">
                 <li><a href="Perfil.html">Perfil</a></li>
                 <li id="PanelAnfi"><a href="PanelDeControl.html">Panel de control</a></li>
+                <li id="PanelReserva"><a href="PanelReservas.html">Mis reservas</a></li>
                 <li><a id="cerrarSesion">Cerrar sesión</a></li>
             </ul>
         </div>
-        </nav>
     </header>
     <main>
         <form action="">
@@ -44,7 +44,14 @@
                 <input type="text" name="nombre">
 
                 <label>Tipo de alojamiento</label>
-                <input type="text" name="tipo">
+                <select name="tipo">
+                    <option value="" disabled selected>Seleccione un tipo</option>
+                    <option value="Hotel">Hotel</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Hostel">Hostel</option>
+                    <option value="Cabaña">Cabaña</option>
+                    <option value="Departamento">Departamento</option>
+                </select>
 
                 <label>Dirección</label>
                 <input type="text" name="direccion">
@@ -88,6 +95,7 @@
         </div>
     </footer>
     <script src="../js/logueo.js"></script>
+    <script src="../js/crearAlojamiento.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,4 @@
-// ----------------------
-// Abrir / cerrar menú
-// ----------------------
+
 const filtroBtn = document.getElementById("filtroBtn");
 const filtroMenu = document.getElementById("filtroMenu");
 
@@ -14,39 +12,36 @@ window.addEventListener("click", (e) => {
     }
 });
 
-// ----------------------
-// Filtrar hospedajes
-// ----------------------
 document.querySelectorAll(".filtro-item").forEach(item => {
     item.addEventListener("click", async () => {
+
+        console.log("CLICK EN:", item.textContent);
 
         const tipo = item.textContent.trim();
 
         // Mostrar todos
         if (tipo === "Mostrar todos") {
-            filtroMenu.classList.remove("show"); // cerrar menú
+            filtroMenu.classList.remove("show");
             return cargarHospedajes();
         }
 
-        // Obtener hospedajes desde el API
+       
         const hospedajes = await getHospedajes();
 
-        // Filtrar por tipo
+        console.log("HOSPEDAJES:", hospedajes);     
+
+        
         const filtrados = hospedajes.filter(h =>
-            h.tipoHospedaje?.nombre?.toLowerCase() === tipo.toLowerCase()
+            h.tipoHospedaje &&
+            h.tipoHospedaje.nombre &&
+            h.tipoHospedaje.nombre.trim().toLowerCase() === tipo.toLowerCase()
         );
 
-        // Pintar resultados
+        console.log("FILTRADOS:", filtrados);      
         pintarCards(filtrados);
-
-        // Cerrar menú
         filtroMenu.classList.remove("show");
     });
 });
-
-// ----------------------
-// Pintar cards filtradas
-// ----------------------
 function pintarCards(lista) {
     const contenedor = document.querySelector(".grid-container");
     contenedor.innerHTML = "";
@@ -60,7 +55,7 @@ function pintarCards(lista) {
             <img src="${h.imagen}">
             <div class="card-content">
                 <h3>${h.nombre}</h3>
-                <p>${h.descripcion}</p>
+                <p>${h.tipoHospedaje?.nombre || "Sin tipo"}</p>
                 <p class="precio">$${h.precio_por_noche} <span>Noche</span></p>
             </div>
         `;

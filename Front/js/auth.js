@@ -1,4 +1,3 @@
-// auth.js
 
 function guardarUsuario(usuario) {
     localStorage.setItem("usuario", JSON.stringify(usuario));
