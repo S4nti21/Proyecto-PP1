@@ -60,5 +60,5 @@ cerrarSesion.addEventListener("click", () => {
     dropdownMenu.style.display = "none";
     PanelAnfi.style.display = "none";
 
-    window.location.href = "index.html";
+    window.location.href = "InicioSesion.html";
 });
