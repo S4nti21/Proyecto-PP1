@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
+
     const user = JSON.parse(localStorage.getItem("usuario"));
     if (!user) {
         alert("Debes iniciar sesión");
@@ -24,20 +25,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (file) imagenSeleccionada = file;
     });
 
+    function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+        });
+    }
     try {
         const response = await fetch(`http://localhost:8080/api/hospedaje/${alojamientoId}`);
         const alojamiento = await response.json();
 
-        console.log("ALOJAMIENTO:", alojamiento);
-
-        // Autocompletar campos simples
         form.querySelector("input[name='nombre']").value = alojamiento.nombre;
         form.querySelector("input[name='direccion']").value = alojamiento.direccion;
         form.querySelector("textarea[name='descripcion']").value = alojamiento.descripcion;
-        form.querySelector("select[name='tipo']").value = alojamiento.tipoHospedaje.nombre;
+
+        form.querySelector("select[name='tipo']").value = alojamiento.tipoHospedaje.id;
 
         const serviciosGuardados = alojamiento.servicios || [];
-
         document.querySelectorAll("input[name='servicios']").forEach(chk => {
             const idServicio = Number(chk.value);
             if (serviciosGuardados.some(s => s.id === idServicio)) {
@@ -55,28 +61,31 @@ document.addEventListener("DOMContentLoaded", async () => {
         e.preventDefault();
 
         const nombre = form.querySelector("input[name='nombre']").value.trim();
-        const tipo = form.querySelector("select[name='tipo']").value;
+        const tipo = Number(form.querySelector("select[name='tipo']").value);
         const direccion = form.querySelector("input[name='direccion']").value.trim();
         const descripcion = form.querySelector("textarea[name='descripcion']").value.trim();
+
         const servicios = [...document.querySelectorAll("input[name='servicios']:checked")]
-            .map(s => Number(s.value));
-
-        const formData = new FormData();
-        formData.append("nombre", nombre);
-        formData.append("tipo", tipo);
-        formData.append("direccion", direccion);
-        formData.append("descripcion", descripcion);
-        formData.append("servicios", JSON.stringify(servicios));
-        formData.append("idUsuario", user.id);
-
+            .map(s => ({ id: Number(s.value) }));
+        let imagenBase64 = null;
         if (imagenSeleccionada) {
-            formData.append("imagen", imagenSeleccionada);
+            imagenBase64 = await fileToBase64(imagenSeleccionada);
         }
+
+        const data = {
+            nombre,
+            direccion,
+            descripcion,
+            tipoHospedaje: { id: tipo },
+            servicios,
+            imagen: imagenBase64
+        };
 
         try {
             const response = await fetch(`http://localhost:8080/api/hospedaje/${alojamientoId}`, {
                 method: "PUT",
-                body: formData
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
             });
 
             if (!response.ok) {

@@ -39,7 +39,7 @@ async function cargarHospedaje() {
         let imagenes = [];
         if (Array.isArray(h.imagenes) && h.imagenes.length) imagenes = h.imagenes;
         else if (h.imagen) imagenes = [h.imagen];
-        else imagenes = ['../img/fotos alojamiento/default.jpg']; // fallback
+        else imagenes = ['../img/fotos alojamiento/default.jpg'];
 
         imagenes.forEach(src => {
             const img = document.createElement("img");

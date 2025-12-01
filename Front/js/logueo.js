@@ -6,7 +6,7 @@ const cerrarSesion = document.getElementById("cerrarSesion");
 const PanelAnfi = document.getElementById("PanelAnfi");
 const PanelReserva = document.getElementById("PanelReserva");
 const userName = document.getElementById("userName");
-
+const fotoPerfilHeader = document.getElementById("fotoPerfilHeader"); 
 
 function cargarHeader() {
     const usuario = JSON.parse(localStorage.getItem("usuario"));
@@ -24,15 +24,20 @@ function cargarHeader() {
 
     userName.textContent = usuario.nombre;
 
+    if (usuario.imagen && usuario.imagen.startsWith("data:image")) {
+        fotoPerfilHeader.src = usuario.imagen;
+    } else {
+        fotoPerfilHeader.src = "../img/icono/Captura_de_pantalla_2025-10-01_211506-removebg-preview.png";
+    }
+
     if (usuario.rol === "ANFITRION") {
         PanelAnfi.style.display = "block";
-        PanelReserva.style.display = "none";   
+        PanelReserva.style.display = "none";
     } else if (usuario.rol === "HUESPED") {
         PanelAnfi.style.display = "none";
-        PanelReserva.style.display = "block";  
+        PanelReserva.style.display = "block";
     }
 }
-
 
 cargarHeader();
 
@@ -52,7 +57,6 @@ cerrarSesion.addEventListener("click", () => {
 
     navUser.classList.add("oculto");
     navAuth.classList.remove("oculto");
-
     dropdownMenu.style.display = "none";
     PanelAnfi.style.display = "none";
 

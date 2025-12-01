@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     const user = JSON.parse(localStorage.getItem("usuario"));
     if (!user) {
         alert("Debes iniciar sesión");
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputImagen = document.querySelector("input[type='file']");
 
     let imagenBase64 = null;
+
 
     inputImagen.addEventListener("change", (e) => {
         const file = e.target.files[0];
@@ -26,31 +28,31 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         const nombre = form.querySelector("input[name='nombre']").value.trim();
-
-        const tipo = form.querySelector("select[name='tipo']").value;
-
+        const tipoId = form.querySelector("select[name='tipo']").value;
         const direccion = form.querySelector("input[name='direccion']").value.trim();
         const precio = form.querySelector("input[name='precio']").value;
         const descripcion = form.querySelector("textarea[name='descripcion']").value;
 
-        const servicios = [...document.querySelectorAll("input[name='servicios']:checked")]
-            .map(s => s.value);
+        const serviciosSeleccionados = [...document.querySelectorAll("input[name='servicios']:checked")]
+            .map(s => ({ id: Number(s.value) }));
 
-        if (!nombre || !tipo || !direccion || !precio || !descripcion) {
+        if (!nombre || !tipoId || !direccion || !precio || !descripcion) {
             alert("Completa todos los campos");
             return;
         }
 
         const data = {
             nombre,
-            tipo,
             direccion,
-            precio,
             descripcion,
-            servicios,
+            precio_por_noche: Number(precio),
             imagen: imagenBase64,
+            tipoHospedaje: { id: Number(tipoId) },
+            servicios: serviciosSeleccionados,
             usuario: { id: user.id }
         };
+
+        console.log("JSON enviado:", data);
 
         try {
             const response = await fetch("http://localhost:8080/api/hospedaje", {

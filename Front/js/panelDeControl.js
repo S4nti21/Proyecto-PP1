@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const userData = JSON.parse(localStorage.getItem("usuario"));
-    if (!userData) return;
+    const user = JSON.parse(localStorage.getItem("usuario"));
+    if (!user) return;
 
-    const userId = userData.id;
+    const userId = user.id;
 
     await cargarAlojamientos(userId);
     await cargarReservas(userId);
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function cargarAlojamientos(userId) {
     const cardsContainer = document.querySelector(".cards");
-    cardsContainer.innerHTML = ""; // limpiar
+    cardsContainer.innerHTML = "";
 
     try {
         const response = await fetch(`http://localhost:8080/api/hospedaje/usuario/${userId}`);
@@ -22,8 +22,10 @@ async function cargarAlojamientos(userId) {
             const card = document.createElement("div");
             card.classList.add("card");
 
+            const imagen = hosp.imagen ? hosp.imagen : "../img/fotos alojamiento/default.jpg";
+
             card.innerHTML = `
-                <img src="${hosp.imagen}" alt="">
+                <img src="${imagen}" alt="">
                 <div class="overlay">
                     <a href="EditarAlojamiento.html?id=${hosp.id}">
                         <button class="btn edit">Editar alojamiento</button>
@@ -32,7 +34,7 @@ async function cargarAlojamientos(userId) {
                 </div>
                 <div class="card-body">
                     <h3>${hosp.nombre}</h3>
-                    <p>${hosp.ubicacion}</p>
+                    <p>${hosp.direccion}</p>
                 </div>
             `;
 
@@ -40,7 +42,7 @@ async function cargarAlojamientos(userId) {
         });
 
     } catch (error) {
-        console.error(error);
+        console.error("Error cargando alojamientos:", error);
     }
 }
 
@@ -61,20 +63,20 @@ async function cargarReservas(userId) {
         cargarCalendario(eventos);
 
     } catch (error) {
-        console.error(error);
+        console.error("Error cargando reservas:", error);
     }
 }
 
 function cargarCalendario(eventos) {
-    var calendarEl = document.getElementById('calendar');
+    const calendarEl = document.getElementById("calendar");
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'es',
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: "dayGridMonth",
+        locale: "es",
         headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay"
         },
         events: eventos
     });
@@ -91,12 +93,14 @@ async function eliminarAlojamiento(id) {
         });
 
         if (response.ok) {
-            alert("Alojamiento eliminado");
+            alert("Alojamiento eliminado correctamente");
             location.reload();
         } else {
-            alert("No se pudo eliminar");
+            alert("No se pudo eliminar el alojamiento");
         }
-    } catch (e) {
-        console.error(e);
+
+    } catch (error) {
+        console.error("Error al eliminar:", error);
+        alert("Error de conexión");
     }
 }

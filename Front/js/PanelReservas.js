@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (resp.ok) {
             alert("Reserva actualizada correctamente");
 
-            // Actualizar calendario
+            
             eventos = await obtenerReservas();
             calendar.removeAllEvents();
             calendar.addEventSource(eventos);

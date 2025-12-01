@@ -33,7 +33,6 @@ form.addEventListener("submit", async (e) => {
         imagenBase64 = await convertirABase64(imagenInput.files[0]);
     }
 
-
     const usuarioActualizado = {
         nombre,
         apellido,
@@ -42,6 +41,8 @@ form.addEventListener("submit", async (e) => {
     };
 
     try {
+        console.log("DATA ENVIADA:", usuarioActualizado);
+
         const response = await fetch(`http://localhost:8080/api/usuario/${usuarioLogueado.id}`, {
             method: "PUT",
             headers: {
@@ -55,7 +56,6 @@ form.addEventListener("submit", async (e) => {
         }
 
         const data = await response.json();
-
         localStorage.setItem("usuario", JSON.stringify(data));
 
         alert("Perfil actualizado correctamente");
