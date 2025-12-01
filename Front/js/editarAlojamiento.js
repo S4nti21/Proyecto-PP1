@@ -33,12 +33,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             reader.onerror = reject;
         });
     }
+
     try {
         const response = await fetch(`http://localhost:8080/api/hospedaje/${alojamientoId}`);
         const alojamiento = await response.json();
 
         form.querySelector("input[name='nombre']").value = alojamiento.nombre;
         form.querySelector("input[name='direccion']").value = alojamiento.direccion;
+        form.querySelector("input[name='precio']").value = alojamiento.precio_por_noche;
         form.querySelector("textarea[name='descripcion']").value = alojamiento.descripcion;
 
         form.querySelector("select[name='tipo']").value = alojamiento.tipoHospedaje.id;
@@ -62,11 +64,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const nombre = form.querySelector("input[name='nombre']").value.trim();
         const tipo = Number(form.querySelector("select[name='tipo']").value);
+        const precio = form.querySelector("input[name='precio']").value.trim();
         const direccion = form.querySelector("input[name='direccion']").value.trim();
         const descripcion = form.querySelector("textarea[name='descripcion']").value.trim();
 
         const servicios = [...document.querySelectorAll("input[name='servicios']:checked")]
             .map(s => ({ id: Number(s.value) }));
+
         let imagenBase64 = null;
         if (imagenSeleccionada) {
             imagenBase64 = await fileToBase64(imagenSeleccionada);
@@ -76,6 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             nombre,
             direccion,
             descripcion,
+            precio_por_noche: Number(precio),
             tipoHospedaje: { id: tipo },
             servicios,
             imagen: imagenBase64
