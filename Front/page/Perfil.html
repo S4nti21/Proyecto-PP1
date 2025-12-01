@@ -18,25 +18,26 @@
         </div>
         <nav>
             <ul id="navAuth" class="nav-links">
-                <li><a href="../page/InicioSesion.html">Iniciar sesion</a></li>
+                <li><a href="../page/InicioSesion.html">Iniciar sesión</a></li>
                 <li><a href="../page/CrearCuenta.html">Hazte una cuenta</a></li>
             </ul>
         </nav>
         <div id="navUser" class="oculto">
             <div class="perfil" id="perfilBtn">
-                <img src="../img/icono/Captura de pantalla 2025-08-11 014632.png" alt="Foto perfil">
+                <img id="fotoPerfilHeader" src="" alt="Foto perfil">
                 <span id="userName">Edinson Cavani</span>
             </div>
             <ul class="dropdown" id="dropdownMenu">
                 <li><a href="Perfil.html">Perfil</a></li>
                 <li id="PanelAnfi"><a href="PanelDeControl.html">Panel de control</a></li>
+                <li id="PanelReserva"><a href="PanelReservas.html">Mis reservas</a></li>
                 <li><a id="cerrarSesion">Cerrar sesión</a></li>
             </ul>
         </div>
-        </nav>
     </header>
+
     <main>
-        <form action="">
+        <form id="formEditar">
             <div class="form-container">
                 <h2>Editar perfil</h2>
 
@@ -44,22 +45,22 @@
                 <input type="text" name="nombre">
 
                 <label>Apellido</label>
-                <input type="text" name="tipo">
+                <input type="text" name="apellido">
 
                 <label>D.N.I</label>
-                <input type="text" name="direccion">
+                <input type="number" name="dni">
 
                 <label>Agregar imagen</label>
                 <div class="file-upload">
                     <i class='bx bx-image'></i>
-                    <input type="file" accept="image/*">
+                    <input type="file" id="inputFoto" accept="image/*">
                 </div>
 
                 <button type="submit">Guardar perfil</button>
             </div>
         </form>
-        </div>
     </main>
+
     <footer>
         <ul class="footer-links">
             <li><a href="">¿Cómo podemos ayudarte?</a></li>
@@ -71,7 +72,9 @@
             <h6>SMARTMIND. ONE WORD. SOFTWARE</h6>
         </div>
     </footer>
+
     <script src="../js/logueo.js"></script>
+    <script src="../js/editarPerfil.js"></script>
 </body>
 
 </html>

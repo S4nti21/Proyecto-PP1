@@ -4,22 +4,42 @@ const perfilBtn = document.getElementById("perfilBtn");
 const dropdownMenu = document.getElementById("dropdownMenu");
 const cerrarSesion = document.getElementById("cerrarSesion");
 const PanelAnfi = document.getElementById("PanelAnfi");
+const PanelReserva = document.getElementById("PanelReserva");
+const userName = document.getElementById("userName");
+const fotoPerfilHeader = document.getElementById("fotoPerfilHeader"); 
 
-const Rol = "Anfitrion";
+function cargarHeader() {
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-if (Rol == "Anfitrion") {
+    if (!usuario) {
+        navAuth.classList.remove("oculto");
+        navUser.classList.add("oculto");
+        PanelAnfi.style.display = "none";
+        PanelReserva.style.display = "none";
+        return;
+    }
+
     navAuth.classList.add("oculto");
     navUser.classList.remove("oculto");
+
+    userName.textContent = usuario.nombre;
+
+    if (usuario.imagen && usuario.imagen.startsWith("data:image")) {
+        fotoPerfilHeader.src = usuario.imagen;
+    } else {
+        fotoPerfilHeader.src = "../img/icono/Captura_de_pantalla_2025-10-01_211506-removebg-preview.png";
+    }
+
+    if (usuario.rol === "ANFITRION") {
+        PanelAnfi.style.display = "block";
+        PanelReserva.style.display = "none";
+    } else if (usuario.rol === "HUESPED") {
+        PanelAnfi.style.display = "none";
+        PanelReserva.style.display = "block";
+    }
 }
-else if (Rol == "Usuario") {
-    navAuth.classList.add("oculto");
-    navUser.classList.remove("oculto");
-    PanelAnfi.classList.add("dropdown");
-}
-else {
-    navAuth.classList.remove("oculto");
-    navUser.classList.add("oculto");
-}
+
+cargarHeader();
 
 perfilBtn.addEventListener("click", () => {
     dropdownMenu.style.display =
@@ -33,7 +53,12 @@ document.addEventListener("click", (e) => {
 });
 
 cerrarSesion.addEventListener("click", () => {
+    localStorage.removeItem("usuario");
+
     navUser.classList.add("oculto");
     navAuth.classList.remove("oculto");
     dropdownMenu.style.display = "none";
+    PanelAnfi.style.display = "none";
+
+    window.location.href = "index.html";
 });

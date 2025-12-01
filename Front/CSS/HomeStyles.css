@@ -116,6 +116,7 @@ main {
     display: flex;
     justify-content: center;
     padding: 40px;
+    min-height: calc(100vh - 120px);
 
 }
 
@@ -190,6 +191,7 @@ main {
 
 
 .grid-container {
+    align-items: flex-start;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -198,6 +200,7 @@ main {
 }
 
 .card {
+    height: auto;
     text-decoration: none;
     color: inherit;
     background: #fff;
